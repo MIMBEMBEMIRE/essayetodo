@@ -2,19 +2,24 @@ const express = require("express");
 const app=express();
 const bodyParser=require("express");
 
+app.set("view engine", "ejs");
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", function(req, res){
 
     var today = new Date();
+    var day="";
     var current =today.getDay();
     if(today.current === 6 || today.current==0){
-    res.send("this is a Monday")
+           day ="weekday";
+
     }
     else{
-        res.send("this not a weekend");
+       day="weeked";
     }
+    res.render("essaye",{essaye: day});
     
     
 
